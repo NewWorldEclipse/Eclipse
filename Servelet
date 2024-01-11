@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student DB Operations</title>
+</head>
+<body>
+
+<h2>Insert Operation</h2>
+<form action = "JavaWebServlet" method = "POST">
+<input type = "hidden" name = "operation" value = "insert">
+USN:<input type = "text" name = "usn" required>
+Name:<input type = "text" name = "name" required>
+Gender:<input type = "text" name = "gender" required>
+Age:<input type = "text" name = "age" required>
+<input type = "submit" value = "Insert">
+</form>
+
+<br>
+
+<h2>Delete Operation</h2>
+<form action = "JavaWebServlet" method = "POST">
+<input type = "hidden" name = "operation" value = "delete">
+USN:<input type = "text" name = "usn" required>
+<input type = "submit" value = "Delete">
+</form>
+
+<br>
+
+<h2>Update Operation</h2>
+<form action = "JavaWebServlet" method = "POST">
+<input type = "hidden" name = "operation" value = "update">
+USN:<input type = "text" name = "usn" required>
+Name:<input type = "text" name = "name" required>
+<input type = "submit" value = "Update">
+</form>
+
+<br>
+
+<h2>Extract Operation</h2>
+<form action = "JavaWebServlet" method = "POST">
+<input type = "hidden" name = "operation" value = "extract">
+USN:<input type = "text" name = "usn" required>
+<input type = "submit" value = "Extract">
+</form>
+
+<br>
+
+
+</body>
+</html>
