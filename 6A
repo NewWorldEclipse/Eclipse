@@ -23,7 +23,7 @@ public class Professor {
 			}
 			else
 			{
-				System.out.println("Not Updated/ Couldn not update");
+				System.out.println("Not Updated Could not update");
 			}
 			ps.close();
 			conn.close();
