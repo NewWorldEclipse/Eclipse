@@ -1,41 +1,41 @@
-4B)
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Armstrong number</title>
+    <meta charset="UTF-8">
+    <title>Check Armstrong Number</title>
 </head>
 <body>
 
+    <form action="" method="post">
+        <label for="number">Enter Number:</label>
+        <input type="text" id="number" name="number" required>
+        <input type="submit" value="Check Now">
+    </form>
 
-<form action="" method="post">
-<label for="number">Number:</label>
-<input type="text" id="number" name="number" required>
-<input type="submit" value="Check">
-</form>
+    <% if (request.getMethod().equals("POST")) { %>
+        <% 
+            String numStr = request.getParameter("number");
+            int number = Integer.parseInt(numStr);
+            int originalNumber = number;
+            int sum = 0;
+            
+            int k = (int)Math.log10(number) + 1;
+            
+            // Calculate the sum of cubes of individual digits
+            while (number > 0) {
+                int digit = number % 10;
+                sum += Math.pow(digit, k);
+                number /= 10;
+            }
 
+            // Check if it's an Armstrong number
+            boolean isArmstrong = (sum == originalNumber);
+        %>
 
-<%
-if (request.getMethod().equals("POST")){ 
-	String str = request.getParameter("number");
-	int num=Integer.parseInt(str);
-	int ori=num;
-	int sum=0;
-	while(num>0){
-		int d=num%10;
-		sum+=(d*d*d);
-		num/=10;
-	}
-	boolean a=(sum==ori);
-	if (a) {
-		out.println("<p><h2>The number is Armstrong</h2></p>");
-	}
-	else {
-		out.println("<p><h2>The number not is Armstrong</h2></p>");
-	}
-} 
-%>
+        <h2>Result:</h2>
+        <p>The number <%= originalNumber %> is <%= isArmstrong ? "an Armstrong" : "not an Armstrong" %> number.</p>
+    <% } %>
+
 </body>
 </html>
