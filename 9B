@@ -1,0 +1,60 @@
+9B) <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Find the Grade</title>
+</head>
+<body>
+
+	<form action="" method="post">
+		Enter Subject 1: <input type = "text" id="s1" name ="s1" required><br>
+		Enter Subject 2: <input type = "text" id="s2" name ="s2" required><br>
+		Enter Subject 3: <input type = "text" id="s3" name ="s3" required><br>
+		Enter Subject 4: <input type = "text" id="s4" name ="s4" required><br>
+		Enter Subject 5: <input type = "text" id="s5" name ="s5" required><br>
+		<input type = "submit" value = "Find Grade">
+	</form>
+	
+	<%
+	
+	
+			if(request.getMethod().equalsIgnoreCase("post"))
+			{
+				
+				int s1 = Integer.parseInt(request.getParameter("s1"));
+				int s2 = Integer.parseInt(request.getParameter("s2"));
+				int s3 = Integer.parseInt(request.getParameter("s3"));
+				int s4 = Integer.parseInt(request.getParameter("s4"));
+				int s5 = Integer.parseInt(request.getParameter("s5"));
+				
+				double avg= (double)(s1 + s2 + s3 + s4 + s5) / 4;
+				
+				String grade = "";
+				if(avg >= 90)
+					grade = "S";
+				else if(avg >= 80)
+					grade = "A";
+				else if(avg >= 70)
+					grade = "B";
+				else if(avg >= 60)
+					grade = "C";
+				else if(avg >= 50)
+					grade = "D";
+				else
+					grade = "Fail";
+				
+				out.println("<br><br>");
+				out.println("<h3>Result<h3>");
+				out.println("Average Marks:"+avg+"<br>");
+				out.println("Grade for Java Subjects"+grade);
+						
+			}
+	
+	%>
+
+
+
+</body>
+</html>
