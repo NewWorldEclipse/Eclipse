@@ -40,7 +40,7 @@ public class Student {
 			rs2.close();
 			in.close();
 			
-			String s3="update stud set grade='S' where name='Ram'";
+			String s3="update stud set grade='S' where name='Ram' and grade = 'A';";
 			PreparedStatement ps3=conn.prepareStatement(s3);
 			if (ps3.executeUpdate()>0) System.out.println("\nUpdated!");
 			else System.out.println("\nNot Updated.");
