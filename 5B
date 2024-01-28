@@ -1,0 +1,73 @@
+5B)
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Calc")
+public class Calc extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		
+		try {
+			
+			String fname = request.getParameter("fname");
+			String lname = request.getParameter("lname");
+			String email = request.getParameter("email");
+			String dob = request.getParameter("dob");
+			int birthYear = Integer.parseInt(dob.substring(0,4));
+			int curYear = java.time.Year.now().getValue();
+			if(curYear - birthYear >= 18)
+			{
+				out.println(fname+" "+lname+" is eligible.<h2>Valid Age<h2>");
+			}
+			else
+			{
+				out.println("<h2>Not possible , not a valid age");
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculator</title>
+</head>
+<body>
+
+	<h2>Voting Page</h2>
+	
+	<form action = "Calc" method = "post">
+	<label for="fname">First Name</label><br>
+	<input type = "text" id = "fname" name = "fname" required><br>
+	
+	<label for="lname">Last Name</label><br>
+	<input type = "text" id = "lname" name = "lname" required><br>
+	
+	<label for="email">Email ID</label><br>
+	<input type = "text" id = "email" name = "email" required><br>
+	
+	<label for="dob">Date of Birth</label><br>
+	<input type = "date" id = "dob" name = "dob" required><br>
+
+	<input type = "submit" id = "Submit" value = "Submit">
+	</form>
+</body>
+</html>
