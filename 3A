@@ -27,7 +27,7 @@ public class Moviesss {
 			rs.close();
 			ps.close();
 			
-			String query2 = "SELECT * from MOVIES where id = 5;";
+			String query2 = "SELECT * from MOVIES limit 1 offset 4;";
 			PreparedStatement ps2 = conn.prepareStatement(query2,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs2 = ps2.executeQuery();
 			
