@@ -23,7 +23,7 @@
             double salary = Double.parseDouble(request.getParameter("salary"));
             String gender = request.getParameter("gender");
 
-            if(salary > 20000)
+            if(salary < 20000)
                 salary *= 1.1;
             out.println("Employee Name: " + name + "<br>");
             out.println("Employee Age: " + age + "<br>");
